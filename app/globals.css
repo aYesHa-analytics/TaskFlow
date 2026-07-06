@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: linear-gradient(135deg, #77b1d8 0%, #fdf4ff 100%);
+  color: #1e2937;
+  font-family: system-ui, sans-serif;
+}
+
+/* Kanban Columns */
+.kanban-column {
+  background: white;
+  border-radius: 24px;
+  padding: 20px;           /* Balanced padding */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e7ff;
+  transition: all 0.3s ease;
+}
+
+.kanban-column:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Task Cards */
+.task-card {
+  background: white;
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 14px;
+  border: 1px solid #e0e7ff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.task-card:hover {
+  border-color: #6366f1;
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Buttons */
+button {
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* New Task Button */
+.new-task-btn {
+  background: linear-gradient(to right, #6366f1, #ec4899);
+  color: white;
+}
+
+/* Search Input */
+input[type="text"] {
+  padding: 14px 20px;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+input[type="text"]:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
