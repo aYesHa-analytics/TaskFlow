@@ -175,13 +175,13 @@ export default function TaskManager() {
       </div>
 
       {showForm && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4">
-          <div className="bg-white p-8 rounded-3xl w-full max-w-md shadow-2xl">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[200] p-4">
+          <div className="bg-white p-6 rounded-3xl w-full max-w-sm shadow-2xl max-h-[85vh] overflow-auto">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
               {editingTask ? 'Edit Task' : 'New Task'}
             </h2>
             
-            <form onSubmit={(e) => { e.preventDefault(); addOrUpdateTask(); }} className="space-y-6">
+            <form onSubmit={(e) => { e.preventDefault(); addOrUpdateTask(); }} className="space-y-5">
               <input
                 type="text"
                 value={newTask.title}
@@ -194,14 +194,14 @@ export default function TaskManager() {
                 value={newTask.description}
                 onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
                 placeholder="Description"
-                className="w-full p-4 border border-gray-300 rounded-2xl h-32 resize-y focus:outline-none focus:border-teal-500"
+                className="w-full p-4 border border-gray-300 rounded-2xl h-24 resize-y focus:outline-none focus:border-teal-500"
               />
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-3 pt-4">
                 <button 
                   type="submit" 
-                  className="flex-1 py-4 bg-gradient-to-r from-teal-500 to-pink-500 text-white rounded-2xl font-medium text-lg"
+                  className="flex-1 py-3 bg-gradient-to-r from-teal-500 to-pink-500 text-white rounded-2xl font-medium"
                 >
-                  Save Task
+                  {editingTask ? 'Update' : 'Create'} Task
                 </button>
                 <button 
                   type="button" 
@@ -210,7 +210,7 @@ export default function TaskManager() {
                     setEditingTask(null); 
                     setNewTask({ title: '', description: '', category: 'Work' }); 
                   }} 
-                  className="flex-1 py-4 bg-gray-100 text-gray-700 rounded-2xl text-lg"
+                  className="flex-1 py-3 bg-gray-100 text-gray-700 rounded-2xl"
                 >
                   Cancel
                 </button>
