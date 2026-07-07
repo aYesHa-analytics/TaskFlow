@@ -2,23 +2,18 @@
 
 import { Task } from '../types';
 import { Edit3, Trash2 } from 'lucide-react';
-// 1. Properly import your Zustand store hook at the top
 import { useTaskStore } from '../store/taskStore';
 
 interface Props {
   task: Task;
+  onEdit: (task: Task) => void; // Added to match KanbanColumn's expectations!
 }
 
-export default function TaskCard({ task }: Props) {
-  // 2. Safely grab the deleteTask action using a selector
+export default function TaskCard({ task, onEdit }: Props) {
   const deleteTask = useTaskStore((state) => state.deleteTask);
 
   const handleDragStart = (e: React.DragEvent) => {
     e.dataTransfer.setData('taskId', task.id);
-  };
-
-  const editTask = () => {
-    window.location.href = `/edit/${task.id}`;
   };
 
   return (
@@ -32,7 +27,8 @@ export default function TaskCard({ task }: Props) {
           {task.category}
         </span>
         <div className="opacity-0 group-hover:opacity-100 flex gap-2">
-          <button onClick={editTask} className="text-teal-600 hover:text-teal-700">
+          {/* Clicking this now securely fires the parent's onEdit function */}
+          <button onClick={() => onEdit(task)} className="text-teal-600 hover:text-teal-700">
             <Edit3 size={18} />
           </button>
           <button onClick={() => deleteTask(task.id)} className="text-pink-600 hover:text-pink-700">
