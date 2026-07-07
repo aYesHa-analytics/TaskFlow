@@ -19,7 +19,11 @@ export default function NewTaskPage() {
     e.preventDefault();
     if (!formData.title.trim()) return;
 
-    addTask(formData);
+    addTask({
+      ...formData,
+      status: 'todo' as const
+    });
+
     router.push('/'); // Back to dashboard
   };
 
